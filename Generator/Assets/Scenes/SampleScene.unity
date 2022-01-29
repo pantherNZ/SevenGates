@@ -130,14 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 788515182355128127, guid: 5993a8aa97a2bb04eb19e06d40be486a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 295.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5588952384379101820, guid: 5993a8aa97a2bb04eb19e06d40be486a, type: 3}
-      propertyPath: m_text
-      value: Level 1 - Slot A
-      objectReference: {fileID: 0}
     - target: {fileID: 7457413166407208163, guid: 5993a8aa97a2bb04eb19e06d40be486a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -222,12 +214,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7457413166407208172, guid: 5993a8aa97a2bb04eb19e06d40be486a, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7457413166407208175, guid: 5993a8aa97a2bb04eb19e06d40be486a, type: 3}
       propertyPath: m_Name
       value: Card
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5993a8aa97a2bb04eb19e06d40be486a, type: 3}
+--- !u!1 &186579607 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7457413166407208175, guid: 5993a8aa97a2bb04eb19e06d40be486a, type: 3}
+  m_PrefabInstance: {fileID: 186579606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &186579608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186579607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b27c8387d702844c865629daee8eb97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  csvData: {fileID: 4900000, guid: 1349265d1f465464e870c338909e1ec4, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

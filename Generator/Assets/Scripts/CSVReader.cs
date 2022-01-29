@@ -14,8 +14,13 @@ public class CSVReader
 	{
 		var list = new List<Dictionary<string, object>>();
 		TextAsset data = Resources.Load( file ) as TextAsset;
+		return Read( data );
+	}
 
-		var lines = Regex.Split( data.text, LINE_SPLIT_RE );
+	public static List<Dictionary<string, object>> Read( TextAsset file )
+	{
+		var list = new List<Dictionary<string, object>>();
+		var lines = Regex.Split( file.text, LINE_SPLIT_RE );
 
 		if( lines.Length <= 1 ) 
 			return list;

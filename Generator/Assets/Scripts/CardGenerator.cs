@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CardGenerator : MonoBehaviour
 {
+    [SerializeField] private TextAsset csvData;
+
     void Start()
     {
-        List<Dictionary<string, object>> data = CSVReader.Read( "Data/CardData" );
+        List<Dictionary<string, object>> data = CSVReader.Read( csvData );
 
         for( var i = 0; i < data.Count; i++ )
         {
