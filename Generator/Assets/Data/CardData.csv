@@ -2,3 +2,4 @@ Primary Element,Secondary Element,Class,Deck,Rank,Level,Slot,Name,Effects,Ongoin
 Sun,Spring,Radiant,Combat,1,1,A,TEST1,This is some text,Status,Behold the test text of the longest length to test the cut off and layout behaviours.,1
 Moon,Summer,Bladedancer,Life,2,2,B,TEST2,Here is some different text that is a bit longer.,Tile Effect,Here is some different text that is a bit longer.,1
 Stars,Autumn,Berserker,Life,3,3,C,TEST3,Behold the test text of the longest length to test the cut off and layout behaviours.,Enchantment,This is some text,1
+Stars,Autumn,Berserker,Combat,3,3,C,TEST4,This card shouldn't have any middle part.,,,1
