@@ -1,21 +1,77 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CardGenerator : MonoBehaviour
 {
-    [SerializeField] private TextAsset csvData;
+    [SerializeField] Image backgroundImage;
+    [SerializeField] Image foregroundImage;
+    [SerializeField] TextMeshProUGUI titleText;
+    [SerializeField] TextMeshProUGUI classText;
+    [SerializeField] TextMeshProUGUI deckAndRankText;
+    [SerializeField] TextMeshProUGUI effectsText;
+    [SerializeField] GameObject onGoingTypeSection;
+    [SerializeField] Image onGoingTypeImagePrimary;
+    [SerializeField] Image onGoingTypeImageSecondary;
+    [SerializeField] TextMeshProUGUI onGoingTypeText;
+    [SerializeField] TextMeshProUGUI onGoingEffectText;
+    [SerializeField] TextMeshProUGUI levelAndSlotText;
 
-    void Start()
+    public void Generate( DataManager dataManager, Dictionary<string, object> cardEntry, Int32 cardIndex )
     {
-        List<Dictionary<string, object>> data = CSVReader.Read( csvData );
+        // Keys
+        var backgroundKey = cardEntry["Primary Element"] as string;
+        var foregroundKey = cardEntry["Secondary Element"] as string;
+        var classKey = cardEntry["Class"] as string;
+        var deckKey = cardEntry["Deck"] as string;
+        var rankKey = ( int )cardEntry["Rank"];
+        var levelKey = ( int )cardEntry["Level"];
+        var slotKey = cardEntry["Slot"] as string;
+        var nameKey = cardEntry["Name"] as string;
+        var effectsKey = cardEntry["Effects"] as string;
+        var ongoingTypeKey = cardEntry["Ongoing Type"] as string;
+        var ongoingEffectKey = cardEntry["Ongoing Effect"] as string;
+        var numCopiesKey = cardEntry["Copies"] as string;
 
-        for( var i = 0; i < data.Count; i++ )
+        // Load background image
+        var primaryElement = dataManager.primaryElements.Find( ( x ) => x.id == backgroundKey );
+        if( primaryElement != null )
         {
-            Debug.Log( i.ToString() );
-
-            foreach( var (key, value) in data[i] )
-                Debug.Log( string.Format( "\t{0}: {1}", key, value.ToString() ) );
+            backgroundImage.sprite = Utility.CreateSprite( primaryElement.image );
+            onGoingTypeImagePrimary.sprite = Utility.CreateSprite( primaryElement.ongoingTypeImage );
         }
+        else
+            Debug.LogError( string.Format( "CardGenerator::Start - Card {0} has an invalid background of {1}, is it missing from the data manager?", cardIndex, backgroundKey ) );
+
+        // Load tree foreground image & ongoing type image (if it is used)
+        var secondaryElement = dataManager.treeElements.Find( ( x ) => x.id == foregroundKey );
+        if( secondaryElement != null )
+        {
+            foregroundImage.sprite = Utility.CreateSprite( secondaryElement.treeImage );
+
+            if( secondaryElement.ongoingTypeImage == null || ongoingTypeKey.Length == 0 )
+            {
+                onGoingTypeSection.Destroy();
+                onGoingEffectText.gameObject.Destroy();
+            }
+            else
+                onGoingTypeImageSecondary.sprite = Utility.CreateSprite( secondaryElement.ongoingTypeImage );
+        }
+        else
+            Debug.LogError( string.Format( "CardGenerator::Start - Card {0} has an invalid foreground / tree image of {1}, is it missing from the data manager?", cardIndex, foregroundKey ) );
+
+        // Set text fields
+        titleText.text = nameKey;
+        classText.text = classKey;
+        deckAndRankText.text = string.Format( "{0} Rank {1}", deckKey, rankKey );
+        effectsText.text = effectsKey;
+        if( onGoingTypeText != null )
+            onGoingTypeText.text = ongoingTypeKey;
+        if( onGoingEffectText != null )
+            onGoingEffectText.text = ongoingEffectKey;
+        levelAndSlotText.text = string.Format( "Level {0} - Slot {1}", levelKey, slotKey );
     }
 }

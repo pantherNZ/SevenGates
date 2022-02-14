@@ -1,4 +1,5 @@
 Primary Element,Secondary Element,Class,Deck,Rank,Level,Slot,Name,Effects,Ongoing Type,Ongoing Effect,Copies
-Sun,Spring,Radiant,Combat,1,1,A,TEST1,This is some text,Status,Behold the test text of the longest length to test the cut off and layout behaviours.,1
-Moon,Summer,Bladedancer,Life,2,2,B,TEST2,Here is some different text that is a bit longer.,Tile Effect,Here is some different text that is a bit longer.,1
-Stars,Autumn,Berserker,Life,3,3,C,TEST3,Behold the test text of the longest length to test the cut off and layout behaviours.,Enchantment,This is some text,1
+Sun,Spring,Radiant,Combat,1,1,A,TEST1,This is some text,Status,Behold the test text of the longest length to test the cut off and layout behaviours.,3
+Moon,Summer,Bladedancer,Life,2,2,B,TEST2,Here is some different text that is a bit longer.,Tile Effect,Here is some different text that is a bit longer.,3
+Stars,Autumn,Berserker,Life,3,3,C,TEST3,Behold the test text of the longest length to test the cut off and layout behaviours.,Enchantment,This is some text,3
+Sun,Autumn,Test Class,Death,3,3,C,TEST3,Behold the test text of the longest length to test the cut off and layout behaviours.,,,1
