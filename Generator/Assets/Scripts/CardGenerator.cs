@@ -48,11 +48,13 @@ public class CardGenerator : MonoBehaviour
 
         // Load tree foreground image & ongoing type image (if it is used)
         var secondaryElement = dataManager.treeElements.Find( ( x ) => x.id == foregroundKey );
+        var destroyOnGoingType = secondaryElement != null && ( secondaryElement.ongoingTypeImage == null || ongoingTypeKey.Length == 0 );
+
         if( secondaryElement != null )
         {
             foregroundImage.sprite = Utility.CreateSprite( secondaryElement.treeImage );
 
-            if( secondaryElement.ongoingTypeImage == null || ongoingTypeKey.Length == 0 )
+            if( destroyOnGoingType )
             {
                 onGoingTypeSection.Destroy();
                 onGoingEffectText.gameObject.Destroy();
@@ -68,6 +70,12 @@ public class CardGenerator : MonoBehaviour
         classText.text = classKey;
         deckAndRankText.text = string.Format( "{0} Rank {1}", deckKey, rankKey );
         effectsText.text = effectsKey;
+        effectsText.ForceMeshUpdate();
+        effectsText.text += new string( '\n', Mathf.Max( 0, 2 - effectsText.textInfo.lineCount ) );
+
+        if( destroyOnGoingType )
+            effectsText.text = new string( '\n', Mathf.Max( 0, 2 ) ) + effectsText.text;
+
         if( onGoingTypeText != null )
             onGoingTypeText.text = ongoingTypeKey;
         if( onGoingEffectText != null )
